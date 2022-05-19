@@ -1,9 +1,25 @@
 name: "DefoldMIDI"
 platforms:
 
+  armv7-ios:
+    context:
+      defines: ["__MACOSX_CORE__", "TARGET_OS_IPHONE"]
+      flags: ["-std=c++11"]
+
+  arm64-ios:
+    context:
+      defines: ["__MACOSX_CORE__", "TARGET_OS_IPHONE"]
+      flags: ["-std=c++11"]
+
+  x86_64-ios:
+    context:
+      defines: ["__MACOSX_CORE__", "TARGET_OS_IPHONE"]
+      flags: ["-std=c++11"]
+
   x86_64-osx:
     context:
       defines: ["__MACOSX_CORE__"]
+      flags: ["-std=c++11"]
 
   x86_64-linux:
     context:
