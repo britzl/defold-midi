@@ -1,6 +1,10 @@
 name: "DefoldMIDI"
 platforms:
 
+  x86_64-osx:
+    context:
+      defines: ["__MACOSX_CORE__"]
+
   x86_64-linux:
     context:
       defines: ["__LINUX_ALSA__"]
@@ -16,9 +20,7 @@ platforms:
   x86_64-win32:
     context:
       defines: ["__WINDOWS_MM__"]
-      libs: ["winmm.lib"]
 
   x86-win32:
     context:
       defines: ["__WINDOWS_MM__"]
-      libs: ["winmm.lib"]
