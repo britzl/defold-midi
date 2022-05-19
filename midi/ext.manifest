@@ -1,6 +1,11 @@
 name: "DefoldMIDI"
 platforms:
 
+  x86_64-linux:
+    context:
+      defines: ["__LINUX_ALSA__"]
+      libs: ["asound" , "pthread"]
+
   js-web:
     context:
       defines: ["__WEB_MIDI_API__"]
