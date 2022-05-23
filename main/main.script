@@ -1,5 +1,14 @@
 function init(self)
-	midi.test()
+	print("out#", midi.count_out())
+	print("in#", midi.count_in())
+
+	midi.open_in(0);
+	timer.delay(0.1, true, function()
+		local m = midi.get_messages()
+		if #m > 0 then
+			pprint(m)
+		end
+	end)
 end
 
 function final(self)
