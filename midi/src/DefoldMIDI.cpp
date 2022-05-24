@@ -14,74 +14,64 @@
 
 static RtMidiIn  *g_midiin = 0;
 static RtMidiOut *g_midiout = 0;
+static dmScript::LuaCallbackInfo* g_Listener = 0;
 
-static int CountOut(lua_State* L)
+
+static int Count(lua_State* L, RtMidi* midi)
 {
 	DM_LUA_STACK_CHECK(L, 1);
-	int count = g_midiout->getPortCount();
+	int count = midi->getPortCount();
 	lua_pushnumber(L, count);
 	return 1;
 }
 
-static int CountIn(lua_State* L)
+
+static int Open(lua_State* L, RtMidi* midi)
+{
+	DM_LUA_STACK_CHECK(L, 0);
+	int port = luaL_checknumber(L, 1);
+	if (lua_isstring(L, 2))
+	{
+		const char* name = luaL_checkstring(L, 2);
+		midi->openPort(port, name);
+	}
+	else
+	{
+		midi->openPort(port);
+	}
+	return 0;
+}
+
+static int OpenVirtual(lua_State* L, RtMidi* midi)
+{
+	DM_LUA_STACK_CHECK(L, 0);
+	const char* name = luaL_checkstring(L, 1);
+	midi->openVirtualPort(name);
+	return 0;
+
+}
+
+static int Close(lua_State* L, RtMidi* midi)
+{
+	DM_LUA_STACK_CHECK(L, 0);
+	midi->closePort();
+	return 0;
+}
+
+static int IsOpen(lua_State* L, RtMidi* midi)
 {
 	DM_LUA_STACK_CHECK(L, 1);
-	int count = g_midiin->getPortCount();
-	lua_pushnumber(L, count);
+	int open = midi->isPortOpen();
+	lua_pushboolean(L, open);
 	return 1;
-}
 
-static int OpenOut(lua_State* L)
-{
-	DM_LUA_STACK_CHECK(L, 0);
-	int port = luaL_checknumber(L, 1);
-	g_midiout->openPort(port);
-	return 0;
-}
-
-static int OpenIn(lua_State* L)
-{
-	DM_LUA_STACK_CHECK(L, 0);
-	int port = luaL_checknumber(L, 1);
-	g_midiin->openPort(port);
-	return 0;
-}
-
-static int OpenVirtualOut(lua_State* L)
-{
-	DM_LUA_STACK_CHECK(L, 0);
-	const char* name = luaL_checkstring(L, 1);
-	g_midiout->openVirtualPort(name);
-	return 0;
-}
-
-static int OpenVirtualIn(lua_State* L)
-{
-	DM_LUA_STACK_CHECK(L, 0);
-	const char* name = luaL_checkstring(L, 1);
-	g_midiin->openVirtualPort(name);
-	return 0;
-}
-
-static int CloseOut(lua_State* L)
-{
-	DM_LUA_STACK_CHECK(L, 0);
-	g_midiout->closePort();
-	return 0;
-}
-
-static int CloseIn(lua_State* L)
-{
-	DM_LUA_STACK_CHECK(L, 0);
-	g_midiin->closePort();
-	return 0;
 }
 
 static int GetMessages(lua_State* L)
 {
 	DM_LUA_STACK_CHECK(L, 1);
 	std::vector<unsigned char> message;
-	double stamp = g_midiin->getMessage( &message );
+	double stamp = g_midiin->getMessage(&message);
 	int nBytes = message.size();
 	lua_newtable(L);
 	for ( int i=0; i<nBytes; i++ )
@@ -92,7 +82,69 @@ static int GetMessages(lua_State* L)
 	return 1;
 }
 
-// Functions exposed to Lua
+static int SendMessage(lua_State* L)
+{
+	DM_LUA_STACK_CHECK(L, 0);
+
+ 	std::vector<unsigned char> message;
+	while (true) {
+		int index = message.size();
+		lua_pushinteger(L, index + 1);
+		lua_gettable(L, -2);
+		if (lua_type(L, -1) == LUA_TNIL)
+		{
+			break;
+		}
+		lua_Number v = luaL_checknumber(L, -1);
+		message.push_back(v);
+		lua_pop(L, 1);
+	}
+
+	g_midiout->sendMessage(&message);
+	return 0;
+}
+
+static int SetListener(lua_State* L)
+{
+	DM_LUA_STACK_CHECK(L, 0);
+	if (g_Listener)
+	{
+		dmScript::DestroyCallback(g_Listener);
+		g_Listener = 0;
+	}
+	g_Listener = dmScript::CreateCallback(L, 1);
+	return 0;
+}
+
+static int GetPortName(lua_State* L, RtMidi* midi)
+{
+	DM_LUA_STACK_CHECK(L, 1);
+	int port = luaL_checknumber(L, 1);
+	const char* name = midi->getPortName(port).c_str();
+	lua_pushstring(L, name);
+	return 1;
+}
+
+
+static int CountOut(lua_State* L) { return Count(L, g_midiout); }
+static int CountIn(lua_State* L) { return Count(L, g_midiin); }
+
+static int OpenOut(lua_State* L) { return Open(L, g_midiout); }
+static int OpenIn(lua_State* L) { return Open(L, g_midiin); }
+
+static int OpenVirtualOut(lua_State* L) { return OpenVirtual(L, g_midiout); }
+static int OpenVirtualIn(lua_State* L) { return OpenVirtual(L, g_midiin); }
+
+static int CloseOut(lua_State* L) { return Close(L, g_midiout); }
+static int CloseIn(lua_State* L) { return Close(L, g_midiin); }
+
+static int IsOutOpen(lua_State* L)  { return IsOpen(L, g_midiout); }
+static int IsInOpen(lua_State* L)  { return IsOpen(L, g_midiin); }
+
+static int GetPortNameOut(lua_State* L) { return GetPortName(L, g_midiout); }
+static int GetPortNameIn(lua_State* L) { return GetPortName(L, g_midiin); }
+
+
 static const luaL_reg Module_methods[] =
 {
 	{"count_out", CountOut},
@@ -103,7 +155,14 @@ static const luaL_reg Module_methods[] =
 	{"open_virtual_in", OpenVirtualIn},
 	{"close_out", CloseOut},
 	{"close_in", CloseIn},
+	{"is_out_open", IsOutOpen},
+	{"is_in_open", IsInOpen},
+	{"get_name_out", GetPortNameOut},
+	{"get_name_in", GetPortNameIn},
+
+	{"send_message", SendMessage},
 	{"get_messages", GetMessages},
+	{"set_listener", SetListener},
 	{0, 0}
 };
 
@@ -132,6 +191,40 @@ dmExtension::Result InitializeDefoldMIDI(dmExtension::Params* params) {
 }
 
 dmExtension::Result UpdateDefoldMIDI(dmExtension::Params* params) {
+	std::vector<unsigned char> message;
+	double stamp = g_midiin->getMessage( &message );
+	int nBytes = message.size();
+	if (nBytes == 0)
+	{
+		return dmExtension::RESULT_OK;
+	}
+
+	if (!dmScript::IsCallbackValid(g_Listener))
+	{
+		return dmExtension::RESULT_OK;
+	}
+
+	lua_State* L = dmScript::GetCallbackLuaContext(g_Listener);
+	DM_LUA_STACK_CHECK(L, 0);
+
+
+	if (!dmScript::SetupCallback(g_Listener))
+	{
+		return dmExtension::RESULT_OK;
+	}
+
+	lua_newtable(L);
+	for ( int i=0; i<nBytes; i++ )
+	{
+		lua_pushnumber(L, i + 1);
+		lua_pushnumber(L, (int)message[i]);
+		lua_rawset(L, -3);
+	}
+
+	dmScript::PCall(L, 2, 0);
+
+	dmScript::TeardownCallback(g_Listener);
+
 	return dmExtension::RESULT_OK;
 }
 
@@ -146,6 +239,13 @@ dmExtension::Result FinalizeDefoldMIDI(dmExtension::Params* params) {
 		delete g_midiout;
 		g_midiout = 0;
 	}
+
+	if (g_Listener)
+	{
+		dmScript::DestroyCallback(g_Listener);
+		g_Listener = 0;
+	}
+
 	return dmExtension::RESULT_OK;
 }
 
