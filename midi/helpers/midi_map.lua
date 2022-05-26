@@ -11,7 +11,8 @@ M[126] = {
 	midi_note_number = 126,
 	keys_61 = nil,
 	keys_88 = nil,
-	note_name = "F#9/Gb9",
+	note_name = "F#9",
+	note_name_flat = "Gb9",
 	frequency = 11839.82
 }
 M[125] = {
@@ -32,7 +33,8 @@ M[123] = {
 	midi_note_number = 123,
 	keys_61 = nil,
 	keys_88 = nil,
-	note_name = "D#9/Eb9",
+	note_name = "D#9",
+	note_name_flat = "Eb9",
 	frequency = 9956.06
 }
 M[122] = {
@@ -46,7 +48,8 @@ M[121] = {
 	midi_note_number = 121,
 	keys_61 = nil,
 	keys_88 = nil,
-	note_name = "C#9/Db9",
+	note_name = "C#9",
+	note_name_flat = "Db9",
 	frequency = 8869.84
 }
 M[120] = {
@@ -67,7 +70,8 @@ M[118] = {
 	midi_note_number = 118,
 	keys_61 = nil,
 	keys_88 = nil,
-	note_name = "A#8/Bb8",
+	note_name = "A#8",
+	note_name_flat = "Bb8",
 	frequency = 7458.62
 }
 M[117] = {
@@ -81,7 +85,8 @@ M[116] = {
 	midi_note_number = 116,
 	keys_61 = nil,
 	keys_88 = nil,
-	note_name = "G#8/Ab8",
+	note_name = "G#8",
+	note_name_flat = "Ab8",
 	frequency = 6644.88
 }
 M[115] = {
@@ -95,7 +100,8 @@ M[114] = {
 	midi_note_number = 114,
 	keys_61 = nil,
 	keys_88 = nil,
-	note_name = "F#8/Gb8",
+	note_name = "F#8",
+	note_name_flat = "Gb8",
 	frequency = 5919.91
 }
 M[113] = {
@@ -116,7 +122,8 @@ M[111] = {
 	midi_note_number = 111,
 	keys_61 = nil,
 	keys_88 = nil,
-	note_name = "D#8/Eb8",
+	note_name = "D#8",
+	note_name_flat = "Eb8",
 	frequency = 4978.03
 }
 M[110] = {
@@ -130,7 +137,8 @@ M[109] = {
 	midi_note_number = 109,
 	keys_61 = nil,
 	keys_88 = nil,
-	note_name = "C#8/Db8",
+	note_name = "C#8",
+	note_name_flat = "Db8",
 	frequency = 4434.92
 }
 M[108] = {
@@ -151,7 +159,8 @@ M[106] = {
 	midi_note_number = 106,
 	keys_61 = nil,
 	keys_88 = 86,
-	note_name = "A#7/Bb7",
+	note_name = "A#7",
+	note_name_flat = "Bb7",
 	frequency = 3729.31
 }
 M[105] = {
@@ -165,7 +174,8 @@ M[104] = {
 	midi_note_number = 104,
 	keys_61 = nil,
 	keys_88 = 84,
-	note_name = "G#7/Ab7",
+	note_name = "G#7",
+	note_name_flat = "Ab7",
 	frequency = 3322.44
 }
 M[103] = {
@@ -179,7 +189,8 @@ M[102] = {
 	midi_note_number = 102,
 	keys_61 = nil,
 	keys_88 = 82,
-	note_name = "F#7/Gb7",
+	note_name = "F#7",
+	note_name_flat = "Gb7",
 	frequency = 2959.96
 }
 M[101] = {
@@ -200,7 +211,8 @@ M[99] = {
 	midi_note_number = 99,
 	keys_61 = nil,
 	keys_88 = 79,
-	note_name = "D#7/Eb7",
+	note_name = "D#7",
+	note_name_flat = "Eb7",
 	frequency = 2489.02
 }
 M[98] = {
@@ -214,7 +226,8 @@ M[97] = {
 	midi_note_number = 97,
 	keys_61 = nil,
 	keys_88 = 77,
-	note_name = "C#7/Db7",
+	note_name = "C#7",
+	note_name_flat = "Db7",
 	frequency = 2217.46
 }
 M[96] = {
@@ -235,7 +248,8 @@ M[94] = {
 	midi_note_number = 94,
 	keys_61 = 59,
 	keys_88 = 74,
-	note_name = "A#6/Bb6",
+	note_name = "A#6",
+	note_name_flat = "Bb6",
 	frequency = 1864.66
 }
 M[93] = {
@@ -249,7 +263,8 @@ M[92] = {
 	midi_note_number = 92,
 	keys_61 = 57,
 	keys_88 = 72,
-	note_name = "G#6/Ab6",
+	note_name = "G#6",
+	note_name_flat = "Ab6",
 	frequency = 1661.22
 }
 M[91] = {
@@ -263,7 +278,8 @@ M[90] = {
 	midi_note_number = 90,
 	keys_61 = 55,
 	keys_88 = 70,
-	note_name = "F#6/Gb6",
+	note_name = "F#6",
+	note_name_flat = "Gb6",
 	frequency = 1479.98
 }
 M[89] = {
@@ -284,7 +300,8 @@ M[87] = {
 	midi_note_number = 87,
 	keys_61 = 52,
 	keys_88 = 67,
-	note_name = "D#6/Eb6",
+	note_name = "D#6",
+	note_name_flat = "Eb6",
 	frequency = 1244.51
 }
 M[86] = {
@@ -298,7 +315,8 @@ M[85] = {
 	midi_note_number = 85,
 	keys_61 = 50,
 	keys_88 = 65,
-	note_name = "C#6/Db6",
+	note_name = "C#6",
+	note_name_flat = "Db6",
 	frequency = 1108.73
 }
 M[84] = {
@@ -319,7 +337,8 @@ M[82] = {
 	midi_note_number = 82,
 	keys_61 = 47,
 	keys_88 = 62,
-	note_name = "A#5/Bb5",
+	note_name = "A#5",
+	note_name_flat = "Bb5",
 	frequency = 932.33
 }
 M[81] = {
@@ -333,7 +352,8 @@ M[80] = {
 	midi_note_number = 80,
 	keys_61 = 45,
 	keys_88 = 60,
-	note_name = "G#5/Ab5",
+	note_name = "G#5",
+	note_name_flat = "Ab5",
 	frequency = 830.61
 }
 M[79] = {
@@ -347,7 +367,8 @@ M[78] = {
 	midi_note_number = 78,
 	keys_61 = 43,
 	keys_88 = 58,
-	note_name = "F#5/Gb5",
+	note_name = "F#5",
+	note_name_flat = "Gb5",
 	frequency = 739.99
 }
 M[77] = {
@@ -368,7 +389,8 @@ M[75] = {
 	midi_note_number = 75,
 	keys_61 = 40,
 	keys_88 = 55,
-	note_name = "D#5/Eb5",
+	note_name = "D#5",
+	note_name_flat = "Eb5",
 	frequency = 622.25
 }
 M[74] = {
@@ -382,7 +404,8 @@ M[73] = {
 	midi_note_number = 73,
 	keys_61 = 38,
 	keys_88 = 53,
-	note_name = "C#5/Db5",
+	note_name = "C#5",
+	note_name_flat = "Db5",
 	frequency = 554.37
 }
 M[72] = {
@@ -403,21 +426,24 @@ M[70] = {
 	midi_note_number = 70,
 	keys_61 = 35,
 	keys_88 = 50,
-	note_name = "A#4/Bb4",
+	note_name = "A#4",
+	note_name_flat = "Bb4",
 	frequency = 466.16
 }
 M[69] = {
 	midi_note_number = 69,
 	keys_61 = 34,
 	keys_88 = 49,
-	note_name = "A4 concert pitch",
+	note_name = "A4",
+	is_concert_pitch = true,
 	frequency = 440
 }
 M[68] = {
 	midi_note_number = 68,
 	keys_61 = 33,
 	keys_88 = 48,
-	note_name = "G#4/Ab4",
+	note_name = "G#4",
+	note_name_flat = "Ab4",
 	frequency = 415.3
 }
 M[67] = {
@@ -431,7 +457,8 @@ M[66] = {
 	midi_note_number = 66,
 	keys_61 = 31,
 	keys_88 = 46,
-	note_name = "F#4/Gb4",
+	note_name = "F#4",
+	note_name_flat = "Gb4",
 	frequency = 369.99
 }
 M[65] = {
@@ -452,7 +479,8 @@ M[63] = {
 	midi_note_number = 63,
 	keys_61 = 28,
 	keys_88 = 43,
-	note_name = "D#4/Eb4",
+	note_name = "D#4",
+	note_name_flat = "Eb4",
 	frequency = 311.13
 }
 M[62] = {
@@ -466,14 +494,16 @@ M[61] = {
 	midi_note_number = 61,
 	keys_61 = 26,
 	keys_88 = 41,
-	note_name = "C#4/Db4",
+	note_name = "C#4",
+	note_name_flat = "Db4",
 	frequency = 277.18
 }
 M[60] = {
 	midi_note_number = 60,
 	keys_61 = 25,
 	keys_88 = 40,
-	note_name = "C4 (middle C)",
+	note_name = "C4",
+	is_middle_c = true,
 	frequency = 261.63
 }
 M[59] = {
@@ -487,7 +517,8 @@ M[58] = {
 	midi_note_number = 58,
 	keys_61 = 23,
 	keys_88 = 38,
-	note_name = "A#3/Bb3",
+	note_name = "A#3",
+	note_name_flat = "Bb3",
 	frequency = 233.08
 }
 M[57] = {
@@ -501,7 +532,8 @@ M[56] = {
 	midi_note_number = 56,
 	keys_61 = 21,
 	keys_88 = 36,
-	note_name = "G#3/Ab3",
+	note_name = "G#3",
+	note_name_flat = "Ab3",
 	frequency = 207.65
 }
 M[55] = {
@@ -515,7 +547,8 @@ M[54] = {
 	midi_note_number = 54,
 	keys_61 = 19,
 	keys_88 = 34,
-	note_name = "F#3/Gb3",
+	note_name = "F#3",
+	note_name_flat = "Gb3",
 	frequency = 185
 }
 M[53] = {
@@ -536,7 +569,8 @@ M[51] = {
 	midi_note_number = 51,
 	keys_61 = 16,
 	keys_88 = 31,
-	note_name = "D#3/Eb3",
+	note_name = "D#3",
+	note_name_flat = "Eb3",
 	frequency = 155.56
 }
 M[50] = {
@@ -550,7 +584,8 @@ M[49] = {
 	midi_note_number = 49,
 	keys_61 = 14,
 	keys_88 = 29,
-	note_name = "C#3/Db3",
+	note_name = "C#3",
+	note_name_flat = "Db3",
 	frequency = 138.59
 }
 M[48] = {
@@ -571,7 +606,8 @@ M[46] = {
 	midi_note_number = 46,
 	keys_61 = 11,
 	keys_88 = 26,
-	note_name = "A#2/Bb2",
+	note_name = "A#2",
+	note_name_flat = "Bb2",
 	frequency = 116.54
 }
 M[45] = {
@@ -585,7 +621,8 @@ M[44] = {
 	midi_note_number = 44,
 	keys_61 = 9,
 	keys_88 = 24,
-	note_name = "G#2/Ab2",
+	note_name = "G#2",
+	note_name_flat = "Ab2",
 	frequency = 103.83
 }
 M[43] = {
@@ -599,7 +636,8 @@ M[42] = {
 	midi_note_number = 42,
 	keys_61 = 7,
 	keys_88 = 22,
-	note_name = "F#2/Gb2",
+	note_name = "F#2",
+	note_name_flat = "Gb2",
 	frequency = 92.5
 }
 M[41] = {
@@ -620,7 +658,8 @@ M[39] = {
 	midi_note_number = 39,
 	keys_61 = 4,
 	keys_88 = 19,
-	note_name = "D#2/Eb2",
+	note_name = "D#2",
+	note_name_flat = "Eb2",
 	frequency = 77.78
 }
 M[38] = {
@@ -634,7 +673,8 @@ M[37] = {
 	midi_note_number = 37,
 	keys_61 = 2,
 	keys_88 = 17,
-	note_name = "C#2/Db2",
+	note_name = "C#2",
+	note_name_flat = "Db2",
 	frequency = 69.3
 }
 M[36] = {
@@ -655,7 +695,8 @@ M[34] = {
 	midi_note_number = 34,
 	keys_61 = nil,
 	keys_88 = 14,
-	note_name = "A#1/Bb1",
+	note_name = "A#1",
+	note_name_flat = "Bb1",
 	frequency = 58.27
 }
 M[33] = {
@@ -669,7 +710,8 @@ M[32] = {
 	midi_note_number = 32,
 	keys_61 = nil,
 	keys_88 = 12,
-	note_name = "G#1/Ab1",
+	note_name = "G#1",
+	note_name_flat = "Ab1",
 	frequency = 51.91
 }
 M[31] = {
@@ -683,7 +725,8 @@ M[30] = {
 	midi_note_number = 30,
 	keys_61 = nil,
 	keys_88 = 10,
-	note_name = "F#1/Gb1",
+	note_name = "F#1",
+	note_name_flat = "Gb1",
 	frequency = 46.25
 }
 M[29] = {
@@ -704,7 +747,8 @@ M[27] = {
 	midi_note_number = 27,
 	keys_61 = nil,
 	keys_88 = 7,
-	note_name = "D#1/Eb1",
+	note_name = "D#1",
+	note_name_flat = "Eb1",
 	frequency = 38.89
 }
 M[26] = {
@@ -718,7 +762,8 @@ M[25] = {
 	midi_note_number = 25,
 	keys_61 = nil,
 	keys_88 = 5,
-	note_name = "C#1/Db1",
+	note_name = "C#1",
+	note_name_flat = "Db1",
 	frequency = 34.65
 }
 M[24] = {
@@ -739,7 +784,8 @@ M[22] = {
 	midi_note_number = 22,
 	keys_61 = nil,
 	keys_88 = 2,
-	note_name = "A#0/Bb0",
+	note_name = "A#0",
+	note_name_flat = "Bb0",
 	frequency = 29.14
 }
 M[21] = {
