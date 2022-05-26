@@ -24,4 +24,8 @@ function M.number_to_name_solfege(note_number, include_octave)
 	return name
 end
 
+function M.number_to_frequency(note_number)
+  return 13.75 * (2 ^ ((note_number - 9) / 12))
+end
+
 return M
