@@ -125,6 +125,16 @@ static int GetPortName(lua_State* L, RtMidi* midi)
 	return 1;
 }
 
+static int IgnoreTypes(lua_State* L)
+{
+	DM_LUA_STACK_CHECK(L, 0);
+	int midiSysex = lua_toboolean(L, 1);
+	int midiTime = lua_toboolean(L, 2);
+	int midiSense = lua_toboolean(L, 3);	
+	g_midiin->ignoreTypes(midiSysex, midiTime, midiSense);
+	return 0;
+}
+
 
 static int CountOut(lua_State* L) { return Count(L, g_midiout); }
 static int CountIn(lua_State* L) { return Count(L, g_midiin); }
@@ -165,6 +175,7 @@ static const luaL_reg Module_methods[] =
 	{"get_name_out", GetPortNameOut},
 	{"get_name_in", GetPortNameIn},
 
+	{"ignore_types", IgnoreTypes},
 	{"send_message", SendMessage},
 	{"get_messages", GetMessages},
 	{"set_listener", SetListener},
