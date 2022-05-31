@@ -145,6 +145,11 @@ static int GetPortNameOut(lua_State* L) { return GetPortName(L, g_midiout); }
 static int GetPortNameIn(lua_State* L) { return GetPortName(L, g_midiin); }
 
 
+static void ErrorHandler(RtMidiError::Type type, const std::string &errorText, void *userData)
+{
+	dmLogError("%s", errorText.c_str());
+}
+
 static const luaL_reg Module_methods[] =
 {
 	{"count_out", CountOut},
@@ -184,7 +189,10 @@ dmExtension::Result AppInitializeDefoldMIDI(dmExtension::AppParams* params) {
 dmExtension::Result InitializeDefoldMIDI(dmExtension::Params* params) {
 	g_midiin = new RtMidiIn();
 	g_midiout = new RtMidiOut();
-	
+
+	g_midiin->setErrorCallback(ErrorHandler, 0);
+	g_midiout->setErrorCallback(ErrorHandler, 0);
+		
 	LuaInit(params->m_L);
 	dmLogInfo("Registered Defold MIDI Extension %s", MODULE_NAME);
 	return dmExtension::RESULT_OK;
