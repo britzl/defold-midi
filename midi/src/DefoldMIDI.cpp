@@ -7,6 +7,10 @@
 #endif
 #include <dmsdk/sdk.h>
 
+#if defined(DM_PLATFORM_HTML5)
+#include <emscripten.h>
+#endif
+
 #if defined(DM_PLATFORM_WINDOWS) || defined(DM_PLATFORM_HTML5) || defined(DM_PLATFORM_OSX)
 
 #include "RtMidi.h"
@@ -136,6 +140,22 @@ static int IgnoreTypes(lua_State* L)
 }
 
 
+static int IsReady(lua_State* L)
+{
+	DM_LUA_STACK_CHECK(L, 1);
+#if defined(DM_PLATFORM_HTML5)
+
+	int b = MAIN_THREAD_EM_ASM_INT( {
+		return ( typeof window._rtmidi_internals_midi_access !== "undefined" )
+	} );
+	lua_pushboolean(L, b);
+#else
+	lua_pushboolean(L, 1);
+#endif
+	return 1;
+}
+
+
 static int CountOut(lua_State* L) { return Count(L, g_midiout); }
 static int CountIn(lua_State* L) { return Count(L, g_midiin); }
 
@@ -175,6 +195,7 @@ static const luaL_reg Module_methods[] =
 	{"get_name_out", GetPortNameOut},
 	{"get_name_in", GetPortNameIn},
 
+	{"is_ready", IsReady},
 	{"ignore_types", IgnoreTypes},
 	{"send_message", SendMessage},
 	{"get_messages", GetMessages},
