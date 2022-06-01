@@ -1,16 +1,31 @@
+local function initialize_midi()
+	print("initialize_midi")
+	local out_count = midi.count_out()
+	local in_count = midi.count_in()
+	print("out#", out_count)
+	print("in#", in_count)
+
+	if in_count > 0 then
+		midi.open_in(0, "foo");
+		print("In open:", midi.is_in_open())
+		print("Out open:", midi.is_out_open())
+
+		print(midi.get_name_in(0))
+	else
+		print("No input devices")
+	end
+end
+
 function init(self)
-	print("out#", midi.count_out())
-	print("in#", midi.count_in())
-
-	midi.open_in(0, "foo");
-
-	print(midi.get_name_in(0))
-
-	print("In open:", midi.is_in_open())
-	print("Out open:", midi.is_out_open())
-
-	midi.set_listener(function(self, messages)
-		pprint(messages)
+	midi.set_listener(function(self, message)
+		if message.event == midi.EVENT_MESSAGE then
+			print("MESSAGE")
+			pprint(message.data)
+		elseif message.event == midi.EVENT_ERROR then
+			print("ERROR " .. message.error)
+		elseif message.event == midi.EVENT_READY then
+			initialize_midi()
+		end
 	end)
 end
 
@@ -21,9 +36,6 @@ function final(self)
 end
 
 function update(self, dt)
-	-- Add update code here
-	-- Learn more: https://defold.com/manuals/script/
-	-- Remove this function if not needed
 end
 
 function fixed_update(self, dt)
