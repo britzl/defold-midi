@@ -52,3 +52,41 @@ function init(self)
 	end)
 end
 ```
+
+# Helpers 
+
+If you are making a MIDI game or tool you may find the following files useful:
+
+## midi/helpers/midi_map.lua
+
+A hard coded list of MIDI codes to notes. C4 is mapped to MIDI code 60.
+
+```
+local midi_map = require("midi.helpers.midi_map")
+
+local middle_c_note_english = midi_map[60].note_name
+
+...
+
+midi_note_number = 60,
+keys_61 = 25,
+keys_88 = 40,
+note_name = "C4",
+is_middle_c = true,
+frequency = 261.63
+
+```
+
+## midi/helpers/midi_tools.lua
+
+Functions to dynamically convert MIDI codes to English notes, solfège syllables, and frequencies. 
+
+```
+local midi_tools = require("midi.helpers.midi_tools")
+
+local middle_c_note_english = midi_tools.number_to_name(60, true)
+local middle_c_note_solfege = midi_tools.number_to_name_solfege(60, true)
+local middle_c_note_frequency = midi_tools.number_to_frequency(60)
+```
+
+These functions assume that MIDI code 60 is C4. You can adjust this by modifying midi_tools.octave_modifier to be higher or lower.
