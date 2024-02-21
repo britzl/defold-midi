@@ -1,22 +1,12 @@
 name: "midi"
 platforms:
 
-  armv7-ios:
+  ios:
     context:
       defines: ["__MACOSX_CORE__"]
       flags: ["-std=c++11"]
 
-  arm64-ios:
-    context:
-      defines: ["__MACOSX_CORE__"]
-      flags: ["-std=c++11"]
-
-  x86_64-ios:
-    context:
-      defines: ["__MACOSX_CORE__"]
-      flags: ["-std=c++11"]
-
-  x86_64-osx:
+  osx:
     context:
       defines: ["__MACOSX_CORE__"]
       flags: ["-std=c++11"]
@@ -26,11 +16,7 @@ platforms:
     context:
       defines: ["__LINUX_ALSA__"]
 
-  js-web:
-    context:
-      defines: ["__WEB_MIDI_API__"]
-
-  wasm-web:
+  web:
     context:
       defines: ["__WEB_MIDI_API__"]
 
